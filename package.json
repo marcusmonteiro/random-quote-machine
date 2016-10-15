@@ -1,0 +1,40 @@
+{
+  "name": "random-quote-machine",
+  "version": "0.1.0",
+  "description": "Build a random quote machine project from FreeCodeCamp",
+  "keywords": [
+    "quote",
+    "quotes",
+    "FreeCodeCamp",
+    "frontend"
+  ],
+  "homepage": "",
+  "bugs": {
+    "url": "",
+    "email": "mvsouza007@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Marcus Vinicius Monteiro de Souza",
+    "email": "mvsouza007@gmail.com",
+    "url": "https://marcusmonteiro.github.io/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcusmonteiro/random-quote-machine.git"
+  },
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.6.1"
+  },
+  "dependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
