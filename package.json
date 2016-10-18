@@ -25,7 +25,10 @@
   },
   "private": true,
   "devDependencies": {
-    "react-scripts": "0.6.1"
+    "enzyme": "^2.5.1",
+    "react-addons-test-utils": "^15.3.2",
+    "react-scripts": "0.6.1",
+    "sinon": "^1.17.6"
   },
   "dependencies": {
     "react": "^15.3.2",
