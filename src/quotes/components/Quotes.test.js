@@ -36,7 +36,8 @@ describe('Quotes', () => {
     console.error.restore();
   });
 
-  it('should render as many QuoteComponents as quotes it r', () => {
+  it('should render as many Quote components as quotes it receives', () => {
     const wrapper = shallow(<Quotes quotes={quotes} />);
+    expect(wrapper.find('Quote').length).toBe(quotes.length);
   });
 });
