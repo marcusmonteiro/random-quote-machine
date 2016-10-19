@@ -16,18 +16,22 @@ const quotes = contents.map((v, i) => {
 describe('Quotes', () => {
   it('must receive a list of quotes as props', () => {
     const stub = sinon.stub(console, 'error');
-    //expect(() => {
-    //  shallow(<Quotes />);
-    //}).toThrow();
+    expect(() => {
+      shallow(<Quotes />);
+    }).toThrow();
 
     const notQuote = {
       notQuote: 'notQuote'
     };
     const notQuotes = [notQuote];
-    shallow(<Quotes quotes={notQuote} />);
+    expect(() => {
+      shallow(<Quotes quotes={notQuote} />);
+    }).toThrow();
+
     shallow(<Quotes quotes={notQuotes} />);
     shallow(<Quotes quotes={quotes} />);
-    expect(stub.calledTwice).toBe(true);
+    console.log(stub.callCount)
+    expect(stub.callCount).toBe(5);
     expect(stub.calledWith(sinon.match('prop type'))).toBe(true);
     console.error.restore();
   });

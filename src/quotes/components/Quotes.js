@@ -6,7 +6,9 @@ function Quotes(props) {
   return (
     <div>
       <ul>
-
+        {props.quotes.map((quote) => {
+          return <Quote quote={quote} />
+        })}
       </ul>
     </div>
   )
