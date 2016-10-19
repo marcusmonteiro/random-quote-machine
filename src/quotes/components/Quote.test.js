@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
 
@@ -40,5 +41,10 @@ describe('Quote component', () => {
     const wrapper = shallow(<Quote quote={quote} />);
     expect(wrapper.find('blockquote').length).toBe(1);
     expect(wrapper.find('cite').length).toBe(1);
-  })
+  });
+
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<Quote quote={quote} />, div);
+  });
 });

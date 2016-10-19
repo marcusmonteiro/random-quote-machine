@@ -1,16 +1,23 @@
 import React from 'react';
 
+function createMarkup(string) {
+  return {
+    __html: string
+  };
+};
+
 function Quote(props) {
+  console.log(props)
   return (
     <div>
       <blockquote>
-        <p>{props.quote.content}</p>
+        <div dangerouslySetInnerHTML={createMarkup(props.quote.content)} />
         <footer>
           - <cite>{props.quote.author}</cite>
         </footer>
       </blockquote>
     </div>
-  )
+  );
 }
 
 Quote.propTypes = {

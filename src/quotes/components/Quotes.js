@@ -6,8 +6,8 @@ function Quotes(props) {
   return (
     <div>
       <ul>
-        {props.quotes.map((quote) => {
-          return <Quote quote={quote} />
+        {props.quotes.map((quote, i) => {
+          return <Quote key={i} quote={quote} />
         })}
       </ul>
     </div>
