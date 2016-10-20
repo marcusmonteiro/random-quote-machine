@@ -7,7 +7,6 @@ function createMarkup(string) {
 };
 
 function Quote(props) {
-  console.log(props)
   return (
     <div>
       <blockquote>
