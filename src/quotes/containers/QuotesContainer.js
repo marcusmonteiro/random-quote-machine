@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FlatButton from 'material-ui/FlatButton';
 
 import Quotes from '../components/Quotes';
 import { request } from '../../utils';
@@ -9,6 +10,13 @@ class QuotesContainer extends Component {
     this.state = {
       quotes: []
     };
+    this.fetchQuote = this.fetchQuote.bind(this);
+    this.anotherQuoteButton =
+      <FlatButton
+        label="Another quote"
+        primary={true}
+        onClick={this.fetchQuote}
+      />
   }
 
   componentDidMount() {
@@ -16,13 +24,18 @@ class QuotesContainer extends Component {
   }
 
   fetchQuote() {
-    const quotesApiUrl = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
+    // const quotesApiUrl = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
+    const quotesApiUrl = 'http://ron-swanson-quotes.herokuapp.com/v2/quotes';
     request(quotesApiUrl)
       .then((data) => {
         const quotes = data.map((quote) => {
+          // return {
+          //   content: quote.content,
+          //   author: quote.title
+          // }
           return {
-            content: quote.content,
-            author: quote.title
+            content: data[0],
+            author: 'Ron Swanson'
           }
         });
         this.setState({
@@ -35,15 +48,14 @@ class QuotesContainer extends Component {
   }
 
   render() {
-    const quote = {
-      content: 'foo',
-      author: 'Foo'
-    }
     if (!this.state.quotes.length > 0) {
-      return <p>Loading</p>;
+      return <p>Loading...</p>;
     }
     return (
-      <Quotes quotes={this.state.quotes} />
+      <div>
+        <Quotes quotes={this.state.quotes} />
+        { this.anotherQuoteButton }
+      </div>
     );
   }
 }

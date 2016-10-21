@@ -11,6 +11,7 @@ function Quote(props) {
     <div>
       <blockquote>
         <div dangerouslySetInnerHTML={createMarkup(props.quote.content)} />
+        <br />
         <footer>
           - <cite>{props.quote.author}</cite>
         </footer>
