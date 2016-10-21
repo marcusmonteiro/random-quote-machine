@@ -28,7 +28,9 @@
     "enzyme": "^2.5.1",
     "react-addons-test-utils": "^15.3.2",
     "react-scripts": "0.6.1",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "stylelint": "^7.5.0",
+    "stylelint-config-standard": "^13.0.2"
   },
   "dependencies": {
     "normalize.css": "^5.0.0",
@@ -39,7 +41,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "stylelint": "stylelint src/**/*css",
+    "lint": "eslint src/**/*.js",
+    "test": "npm run stylelint && react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   }
 }

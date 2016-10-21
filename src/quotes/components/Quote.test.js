@@ -32,9 +32,9 @@ describe('Quote component', () => {
   });
 
   it(`should render the quote's content and author`, () => {
-    const wrapper = shallow(<Quote quote={quote} />);
-    expect(wrapper.containsMatchingElement(quote.content)).toBe(true);
-    expect(wrapper.containsMatchingElement(quote.author)).toBe(true);
+    const wrapper = shallow(<Quote quote={quote} />).html();
+    expect(wrapper.search(quote.content)).toBeGreaterThan(0);
+    expect(wrapper.search(quote.author)).toBeGreaterThan(0);
   });
 
   it('should have a blockquote and a cite element', () => {
