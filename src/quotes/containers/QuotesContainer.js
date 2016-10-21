@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import FlatButton from 'material-ui/FlatButton';
 
 import Quotes from '../components/Quotes';
 import { request } from '../../utils';
+import ronSwansonImage from './ron_swanson.png';
 
 class QuotesContainer extends Component {
   constructor(props) {
@@ -12,11 +12,9 @@ class QuotesContainer extends Component {
     };
     this.fetchQuote = this.fetchQuote.bind(this);
     this.anotherQuoteButton =
-      <FlatButton
-        label="Another quote"
-        primary={true}
-        onClick={this.fetchQuote}
-      />
+      <div>
+        <button onClick={ this.fetchQuote }>Another Quote</button>
+      </div>
   }
 
   componentDidMount() {
