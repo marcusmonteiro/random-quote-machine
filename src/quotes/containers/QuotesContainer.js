@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 import Quotes from '../components/Quotes';
 import { request } from '../../utils';
-import ronSwansonImage from './ron_swanson.png';
+
+const styles = {
+  width: '21em'
+};
 
 class QuotesContainer extends Component {
   constructor(props) {
@@ -13,7 +16,7 @@ class QuotesContainer extends Component {
     this.fetchQuote = this.fetchQuote.bind(this);
     this.anotherQuoteButton =
       <div>
-        <button onClick={ this.fetchQuote }>Another Quote</button>
+        <button onClick={ this.fetchQuote }>More wisdom from Ron</button>
       </div>
   }
 
@@ -50,7 +53,7 @@ class QuotesContainer extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div>
+      <div style={styles}>
         <Quotes quotes={this.state.quotes} />
         { this.anotherQuoteButton }
       </div>
