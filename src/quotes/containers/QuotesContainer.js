@@ -20,7 +20,6 @@ class QuotesContainer extends Component {
     const quotesApiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
     $.getJSON(quotesApiUrl)
       .done((data) => {
-        console.log(data)
         const quotes = [{
           content: data.quoteText,
           author: data.quoteAuthor
