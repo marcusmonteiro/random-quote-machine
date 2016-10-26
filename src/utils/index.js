@@ -2,8 +2,8 @@ export function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export function request(url) {
-  return fetch(url)
+export function request(url, options) {
+  return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
     .then((data) => {

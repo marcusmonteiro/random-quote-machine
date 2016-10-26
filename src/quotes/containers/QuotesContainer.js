@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-
+import $ from 'jquery';
+import { Button, Grid, Row , Col } from 'react-bootstrap';
 import Quotes from '../components/Quotes';
-import { request } from '../../utils';
-
-const styles = {
-  width: '21em'
-};
 
 class QuotesContainer extends Component {
   constructor(props) {
@@ -14,10 +10,6 @@ class QuotesContainer extends Component {
       quotes: []
     };
     this.fetchQuote = this.fetchQuote.bind(this);
-    this.anotherQuoteButton =
-      <div>
-        <button onClick={ this.fetchQuote }>More wisdom from Ron</button>
-      </div>
   }
 
   componentDidMount() {
@@ -25,27 +17,21 @@ class QuotesContainer extends Component {
   }
 
   fetchQuote() {
-    // const quotesApiUrl = 'http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1';
-    const quotesApiUrl = 'http://ron-swanson-quotes.herokuapp.com/v2/quotes';
-    request(quotesApiUrl)
-      .then((data) => {
-        const quotes = data.map((quote) => {
-          // return {
-          //   content: quote.content,
-          //   author: quote.title
-          // }
-          return {
-            content: data[0],
-            author: 'Ron Swanson'
-          }
-        });
+    const quotesApiUrl = 'http://api.forismatic.com/api/1.0/?method=getQuote&lang=en&format=jsonp&jsonp=?';
+    $.getJSON(quotesApiUrl)
+      .done((data) => {
+        console.log(data)
+        const quotes = [{
+          content: data.quoteText,
+          author: data.quoteAuthor
+        }];
         this.setState({
-          quotes: quotes
-        });
+          quotes
+        })
       })
-      .catch((err) => {
-        console.error(err)
-      });
+      .fail((err) => {
+        console.error(err);
+      })
   }
 
   render() {
@@ -53,10 +39,18 @@ class QuotesContainer extends Component {
       return <p>Loading...</p>;
     }
     return (
-      <div style={styles}>
-        <Quotes quotes={this.state.quotes} />
-        { this.anotherQuoteButton }
-      </div>
+      <Grid>
+        <Row>
+          <Col>
+            <Quotes quotes={ this.state.quotes } />
+          </Col>
+        </Row>
+        <Row>
+           <Col>
+            <Button bsStyle="primary" onClick={ this.fetchQuote }>Another quote</Button>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
